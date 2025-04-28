@@ -1,0 +1,341 @@
+You said:
+{% extends "base.html" %}
+
+{% block title %}
+<title>PartEasy | หน้าแรก by PartEasy</title>
+{% endblock %}
+
+{% block content %}
+<!-- External Styles -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/style.css">
+
+<!-- Custom Style -->
+<style>
+  /* สีพื้นหลัง */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* สีพื้นหลังอ่อน */
+    color: #333; /* สีข้อความเข้ม */
+    padding-top: 80px;
+  }
+
+  /* Hero Section */
+  .hero-image {
+    position: relative;
+    height: 85vh;
+    background: url('https://cdn.pixabay.com/photo/2018/09/04/02/13/tranny-3652852_1280.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* ทำให้ข้อความเด่น */
+  }
+
+  .hero-text h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 50px;
+    border-radius: 15px;
+    animation: fadeInDown 1s ease-in-out;
+  }
+
+  @keyframes fadeInDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Section หมวดหมู่ */
+  h2 {
+    text-align: center;
+    margin: 60px 0 30px;
+    font-weight: bold;
+    color: #111;
+    font-size: 2rem;
+  }
+
+  .scroll-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 0;
+  }
+
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    background: #fff;
+    padding: 15px 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    display: none; /* ซ่อน scrollbar */
+  }
+
+  .item {
+    flex: 0 0 auto;
+    width: 130px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .item:hover {
+    transform: scale(1.1);
+  }
+
+  .item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid #bbb;
+  }
+
+  .arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 35px;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 5;
+    transition: background 0.3s;
+  }
+
+  .arrow-btn:hover {
+    background: #333;
+  }
+
+  .arrow-left { left: -20px; }
+  .arrow-right { right: -20px; }
+
+  /* ปุ่ม */
+  .btn-dark {
+    background-color: #000; /* สีดำ */
+    color: white; /* ข้อความสีขาว */
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    transition: background 0.3s;
+  }
+
+  .btn-dark:hover {
+    background-color: #333; /* เปลี่ยนสีเป็นสีเทาเข้มเมื่อ hover */
+  }
+
+  /* ฟอร์ม */
+  .form-select, .form-control {
+    border-radius: 12px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+  }
+
+  /* Footer */
+  footer {
+    background: #000; /* สีพื้นหลังของ footer */
+    color: #aaa; /* สีข้อความใน footer */
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: 80px;
+  }
+
+  /* Navbar */
+  nav.navbar {
+    background-color: #000 !important; /* Navbar สีดำ */
+  }
+
+  nav.navbar .navbar-brand img {
+    height: 40px;
+    filter: brightness(0) invert(1); /* เปลี่ยนสีโลโก้เป็นขาว */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  nav.navbar .navbar-brand img:hover {
+    transform: scale(1.1);
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-image">
+  <div class="hero-text">
+    <h1>PartEasy</h1>
+  </div>
+</section>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="https://www.spu.ac.th/fac/commarts/wp-content/uploads/sites/3/2024/02/SPU-LOGO.png" alt="SPU Logo" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">หน้าแรก</a></li>
+        <li class="nav-item"><a class="nav-link" href="/form">แนะนำสินค้า</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">ติดต่อเรา</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Section หมวดหมู่ -->
+<h2>หมวดหมู่อะไหล่รถยนต์</h2>
+<div class="scroll-wrapper">
+  <button class="arrow-btn arrow-left" onclick="scrollCarousel(-1)">‹</button>
+  <div class="scroll-container" id="carousel">
+    <!-- หมวดหมู่ items -->
+    <div class="item"><img src="https://i.ytimg.com/vi/EggRexQxaNg/maxresdefault.jpg"><div>เครื่องยนต์</div></div>
+    <div class="item"><img src="https://png.pngtree.com/thumb_back/fw800/background/20231006/pngtree-detailed-3d-rendering-of-disassembled-planetary-gearbox-components-bearings-shafts-and-image_13530126.png"><div>เกียร์</div></div>
+    <div class="item"><img src="http://cdn.globalso.com/antbrake/IMG_4744.jpg"><div>เบรก</div></div>
+    <div class="item"><img src="https://www.pataraair.com/wp-content/uploads/2019/03/Isuzu-Dmax05-%E0%B8%A5%E0%B8%B9%E0%B8%81%E0%B8%AA%E0%B8%B9%E0%B8%9A-TFF-%E0%B8%81%E0%B8%B2%E0%B8%95%E0%B9%89%E0%B8%B2-3.jpg"><div>แอร์</div></div>
+    <div class="item"><img src="https://www.tqm.co.th/gallery/4963.jpg"><div>ใบปัดน้ำฝน</div></div>
+    <div class="item"><img src="https://www.ps-carservice.com/wp-content/uploads/2019/08/Castrol-19.jpg"><div>น้ำมันเครื่อง</div></div>
+    <div class="item"><img src="https://image.makewebeasy.net/makeweb/r_1200x0/ZffKfjIbh/content/Extra_120L_R_DRY.png"><div>แบตเตอรี่</div></div>
+    <div class="item"><img src="https://www.lensotires.com/assets/img/RT07/03.jpg"><div>ยาง</div></div>
+  </div>
+  <button class="arrow-btn arrow-right" onclick="scrollCarousel(1)">›</button>
+</div>
+
+<!-- Form Section -->
+<div class="container my-5">
+  <form>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <!-- ฟอร์มฝั่งซ้าย -->
+        <label class="form-label">ยี่ห้อรถยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>Toyota</option>
+          <option>Honda</option>
+          <option>Mitsubishi</option>
+          <option>Nissan</option>
+          <option>Ford</option>
+        </select>
+
+        <label class="form-label mt-3">ปีรถยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>2015</option>
+          <option>2018</option>
+          <option>2020</option>
+          <option>2022</option>
+          <option>2024</option>
+        </select>
+
+        <label class="form-label mt-3">ความจุเครื่องยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>1.5L</option>
+          <option>1.8L</option>
+          <option>2.0L</option>
+          <option>2.4L</option>
+          <option>3.0L</option>
+        </select>
+
+        <label class="form-label mt-3">ระบบเกียร์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>อัตโนมัติ</option>
+          <option>ธรรมดา</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <!-- ฟอร์มฝั่งขวา -->
+        <label class="form-label">รุ่นรถยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>Fortuner</option>
+          <option>Civic</option>
+          <option>Triton</option>
+          <option>Navara</option>
+          <option>Everest</option>
+        </select>
+
+        <label class="form-label mt-3">รุ่นเครื่องยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>1NZ-FE</option>
+          <option>2KD-FTV</option>
+          <option>K20A</option>
+          <option>4G63</option>
+          <option>HR15DE</option>
+        </select>
+
+        <label class="form-label mt-3">ระบบเครื่องยนต์</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>เบนซิน</option>
+          <option>ดีเซล</option>
+          <option>ไฮบริด</option>
+          <option>ไฟฟ้า</option>
+        </select>
+
+        <label class="form-label mt-3">ระบบขับเคลื่อน</label>
+        <select class="form-select">
+          <option selected>เลือกตัวเลือก</option>
+          <option>ขับหน้า</option>
+          <option>ขับหลัง</option>
+          <option>4WD</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button class="btn btn-dark">ค้นหา</button>
+      <button type="reset" class="btn btn-outline-secondary ms-3">ล้างข้อมูล</button>
+    </div>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+  <p>&copy; 2024 SPU | Information Technology | by PartEasy</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const container = document.getElementById('carousel');
+  const itemWidth = container.children[0].offsetWidth + 20;
+  const originalItems = Array.from(container.children);
+  originalItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    container.appendChild(clone);
+  });
+
+  let scrollPosition = 0;
+
+  function scrollCarousel(direction) {
+    scrollPosition += direction * itemWidth;
+    if (scrollPosition >= container.scrollWidth / 2) {
+      scrollPosition = 0;
+    } else if (scrollPosition < 0) {
+      scrollPosition = container.scrollWidth / 2 - container.offsetWidth;
+    }
+    container.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+  }
+</script>
+{% endblock %}
+
+  
+
